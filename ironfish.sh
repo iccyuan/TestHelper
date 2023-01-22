@@ -37,11 +37,19 @@ run_wallet_burn() {
 }
 
 run_wallet_send() {
-    ironfish wallet:send --to dfc2679369551e64e3950e06a88e68466e813c63b100283520045925adbe59ca
+    ironfish wallet:send --to 67827890a0ad1237c79b317d395c7ec9566823fe8700e8acf8c2d0ff72a900b4
 }
 
 run_faucet() {
     ironfish faucet
+}
+
+run_wallet_list() {
+    ironfish wallet:accounts
+}
+
+run_wallet_address() {
+    ironfish wallet:address
 }
 
 run_wallet_balances() {
@@ -68,19 +76,21 @@ start_menu() {
     while true
     do
     green " ========================================== "
-    green " ironfish 管理脚本"
-    green "     fork from Allen_Li   v1.0.0"
+    green "         ironfish 管理脚本"
+    green "   fork from Allen_Li   v1.0.0"
     green " ========================================== "
     echo
     red " ———————————————— 安装向导 ———————————————— "
     yellow " 1. 任务一:铸币"
     yellow " 2. 任务二:燃烧铸币"
     yellow " 3. 任务三:发送铸币"
-    yellow " 4. 查看钱包余额"
-    yellow " 5. 查看交易记录"
-    yellow " 6. 水龙头"
-    yellow " 7. 查看节点日志"
-    yellow " 8. 查看节点状态"
+    yellow " 4. 我的钱包"
+    yellow " 5. 默认钱包地址"
+    yellow " 6. 默认钱包余额"
+    yellow " 7. 默认钱包交易记录"
+    yellow " 8. 水龙头"
+    yellow " 9. 查看节点日志"
+    yellow " 10. 查看节点状态"
     yellow " 0. 退出 管理脚本"
     green " ========================================== "
     read -rp "Please enter a number:  " num
@@ -95,18 +105,24 @@ start_menu() {
         run_wallet_send
         ;;
     4)
-        run_wallet_balances
+        run_wallet_list
         ;;
     5)
-        run_wallet_transactions
+        run_wallet_address
         ;;
     6)
-        run_faucet
+        run_wallet_balances
         ;;
     7)
-        run_read_log
+        run_wallet_transactions
         ;;
     8)
+        run_faucet
+        ;;
+    9)
+        run_read_log
+        ;;
+    10)
         run_status
         ;;
     0)

@@ -60,10 +60,6 @@ run_wallet_transactions() {
     ironfish wallet:transactions
 }
 
-run_read_log() {
-    tail -n 10 /root/ironfish_node.log
-}
-
 run_status() {
     ironfish status
 }
@@ -86,8 +82,8 @@ start_menu() {
     yellow " 6. 默认钱包余额"
     yellow " 7. 默认钱包交易记录"
     yellow " 8. 水龙头"
-    yellow " 9. 查看节点日志"
-    yellow " 0. 退出 管理脚本"
+    yellow " 9. 查看状态"
+    yellow " 0. 退出管理脚本"
     green " ========================================== "
     read -rp "Please enter a number:  " num
     case "$num" in
@@ -116,9 +112,6 @@ start_menu() {
         run_faucet
         ;;
     9)
-        run_read_log
-        ;;
-    10)
         run_status
         ;;
     0)
